@@ -1,3 +1,3 @@
 interface QuackBahevior {
-  quack: () => void;
+  quack: Function;
 }

@@ -1,3 +1,3 @@
 interface FlyBahevior {
-  fly: () => void;
+  fly: Function;
 }
