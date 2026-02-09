@@ -1,0 +1,3 @@
+interface FlyBahevior {
+  fly: () => void;
+}

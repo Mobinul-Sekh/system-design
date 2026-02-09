@@ -1,0 +1,3 @@
+interface QuackBahevior {
+  quack: () => void;
+}
