@@ -1,0 +1,9 @@
+// actors -> parking lot user, parking lot admin, parking lot management system (PLMS).
+// entities -> user, lot, vahicle, confirmation token, parking area, payment.
+// schema ->
+//   1. user -> id, name, phone number, has license(boolean).
+//   2. parking area -> id, space, gates, security(low, high, decent).
+//   3. parking lot -> id, type(2 wheeler, 4 wheeler, others)
+//   4. vahicle -> id, type(2 wheeler, 4 wheeler, others), vahicle number.
+//   5. confirmation token -> id, parking time, due time, per mintues late fee, confirmation status(Confirmed).
+//   6. payment -> id, amount, tax, payment mode.
