@@ -1,14 +1,14 @@
 import { ParkingArea } from "./parking-area";
 import { User } from "./user";
-import { Vahicle } from "./vahicle";
+import { Vehicle } from "./vehicle";
 
 export class ParkingLotManagementSystem {
-  vahicle: Vahicle;
+  vehicle: Vehicle;
   driver: User;
   parkingArea: ParkingArea;
 
-  constructor(vahicle: Vahicle, driver: User, parkingArea: ParkingArea) {
-    this.vahicle = vahicle;
+  constructor(vehicle: Vehicle, driver: User, parkingArea: ParkingArea) {
+    this.vehicle = vehicle;
     this.driver = driver;
     this.parkingArea = parkingArea;
   }
@@ -17,8 +17,8 @@ export class ParkingLotManagementSystem {
     return this.driver.hasUserLicense();
   }
 
-  private doesVahicleHasValidNumber() {
-    return this.vahicle.isValicleNumberValid();
+  private doesVehicleHasValidNumber() {
+    return this.vehicle.isValicleNumberValid();
   }
 
   public processParking() {
@@ -29,24 +29,24 @@ export class ParkingLotManagementSystem {
       return;
     }
 
-    if (!this.doesVahicleHasValidNumber()) {
+    if (!this.doesVehicleHasValidNumber()) {
       console.error(
-        "Sorry can't let you park here -- you're vahicle's number is invalid/missing.",
+        "Sorry can't let you park here -- you're vehicle's number is invalid/missing.",
       );
       return;
     }
 
     const avaiableSameTypeBlocks = this.parkingArea
-      .filterBlocksByVahicleType(this.vahicle.type)
-      .filter((block) => block.currentVahicleParked < block.capacity);
+      .filterBlocksByVehicleType(this.vehicle.type)
+      .filter((block) => block.currentVehicleParked < block.capacity);
 
 
     const foundBlock = avaiableSameTypeBlocks.toArray()[0];
-    foundBlock.parkVahicle(this.vahicle);
+    foundBlock.parkVehicle(this.vehicle);
 
     return {
-      message: "Vahicle successfully parked.",
-      vahicleNumber: this.vahicle.vahicleNumber,
+      message: "Vehicle successfully parked.",
+      vehicleNumber: this.vehicle.vehicleNumber,
       driverName: this.driver.name,
       parkedBlockNumber: foundBlock.lotId,
       parkingAreaId: this.parkingArea.areaCode
@@ -59,10 +59,10 @@ export class ParkingLotManagementSystem {
       console.error("Enter a valid parkingBlockId");
       return;
     }
-    block.removeVahicle(this.vahicle.vahicleNumber);
+    block.removeVehicle(this.vehicle.vehicleNumber);
     return {
-      message: "Vahicle successfully departed.",
-      vahicleNumber: this.vahicle.vahicleNumber;
+      message: "Vehicle successfully departed.",
+      vehicleNumber: this.vehicle.vehicleNumber;
     }
   }
 }

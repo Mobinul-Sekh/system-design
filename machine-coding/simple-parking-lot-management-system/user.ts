@@ -2,18 +2,18 @@ export class User {
   name: string;
   phoneNo: string;
   hasLicense: boolean;
-  vahicleNumber: string;
+  vehicleNumber: string;
 
   constructor(
     name: string,
     phoneNo: string,
     hasLicense: boolean,
-    vahicleNumber: string,
+    vehicleNumber: string,
   ) {
     this.name = name;
     this.phoneNo = phoneNo;
     this.hasLicense = hasLicense;
-    this.vahicleNumber = vahicleNumber;
+    this.vehicleNumber = vehicleNumber;
   }
 
   public getUserName() {
@@ -24,8 +24,8 @@ export class User {
     return this.phoneNo;
   }
 
-  public getVahicleNumber() {
-    return this.vahicleNumber;
+  public getVehicleNumber() {
+    return this.vehicleNumber;
   }
 
   public hasUserLicense() {

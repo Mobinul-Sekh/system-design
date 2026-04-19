@@ -1,6 +1,6 @@
-import { Vahicle } from "./vahicle";
+import { Vehicle } from "./vehicle";
 
-export enum VahicleTypeEnum {
+export enum VehicleTypeEnum {
   "2-WHEEL" = "2-Wheeler",
   "4-WHEEL" = "4-Wheeler",
   "OTHER" = "other",
@@ -8,41 +8,41 @@ export enum VahicleTypeEnum {
 
 export class ParkingBlock {
   lotId: string;
-  type: VahicleTypeEnum;
+  type: VehicleTypeEnum;
   capacity: number;
-  currentVahicleParked: number = 0;
-  vahicleDB: Map<string, Vahicle> = new Map<string, Vahicle>();
+  currentVehicleParked: number = 0;
+  vehicleDB: Map<string, Vehicle> = new Map<string, Vehicle>();
 
-  constructor(lotId: string, type: VahicleTypeEnum, capacity: number) {
+  constructor(lotId: string, type: VehicleTypeEnum, capacity: number) {
     this.lotId = lotId;
     this.type = type;
     this.capacity = capacity;
   }
 
   private hasCapacity() {
-    return this.currentVahicleParked < this.capacity;
+    return this.currentVehicleParked < this.capacity;
   }
 
-  private isVahicleParked(vahicleNumber: string) {
-    return this.vahicleDB.has(vahicleNumber);
+  private isVehicleParked(vehicleNumber: string) {
+    return this.vehicleDB.has(vehicleNumber);
   }
 
-  public parkVahicle(vahicle: Vahicle) {
+  public parkVehicle(vehicle: Vehicle) {
     if (!this.hasCapacity()) {
       console.log("Parking Block is already full.");
     }
 
-    this.vahicleDB.set(vahicle.vahicleNumber, vahicle);
-    this.currentVahicleParked += 1;
+    this.vehicleDB.set(vehicle.vehicleNumber, vehicle);
+    this.currentVehicleParked += 1;
   }
 
-  public removeVahicle(vahicleNumber: string) {
-    if (!this.isVahicleParked(vahicleNumber)) {
-      console.error("Your Vahicle is not parked in this block");
+  public removeVehicle(vehicleNumber: string) {
+    if (!this.isVehicleParked(vehicleNumber)) {
+      console.error("Your Vehicle is not parked in this block");
       return;
     }
 
-    this.vahicleDB.delete(vahicleNumber);
-    this.currentVahicleParked -= 1;
+    this.vehicleDB.delete(vehicleNumber);
+    this.currentVehicleParked -= 1;
   }
 }

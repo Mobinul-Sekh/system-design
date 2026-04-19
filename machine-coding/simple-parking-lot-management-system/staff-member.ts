@@ -1,10 +1,10 @@
-class ParkingLotStuff {
-  stuffId: string;
+class ParkingLotStaff {
+  staffId: string;
   name: string;
   lotId: string;
 
-  constructor(stuffId: string, name: string, lotId: string) {
-    this.stuffId = stuffId;
+  constructor(staffId: string, name: string, lotId: string) {
+    this.staffId = staffId;
     this.lotId = lotId;
     this.name = name;
   }
@@ -14,7 +14,7 @@ class ParkingLotStuff {
   }
 
   public getAdminId() {
-    return this.stuffId;
+    return this.staffId;
   }
 
   public raiseIssue() {

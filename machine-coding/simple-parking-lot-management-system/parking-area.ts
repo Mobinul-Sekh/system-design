@@ -1,4 +1,4 @@
-import { ParkingBlock, VahicleTypeEnum } from "./parking-block";
+import { ParkingBlock, VehicleTypeEnum } from "./parking-block";
 
 export enum SecurityEnum {
   LOW = "low",
@@ -36,13 +36,13 @@ export class ParkingArea {
     this.parkingBlocks.set(block.lotId, block);
   }
 
-  public filterBlocksByVahicleType(type: VahicleTypeEnum) {
+  public filterBlocksByVehicleType(type: VehicleTypeEnum) {
     return this.parkingBlocks.values().filter((block) => block.type === type);
   }
 
   public filterAvailableCapacityBlocks() {
     return this.parkingBlocks
       .values()
-      .filter((block) => block.currentVahicleParked < block.capacity);
+      .filter((block) => block.currentVehicleParked < block.capacity);
   }
 }

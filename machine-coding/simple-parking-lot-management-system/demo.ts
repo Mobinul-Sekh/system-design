@@ -2,9 +2,9 @@ import { ParkingLotAdmin } from "./admin";
 import { ParkingLotAdminSystem } from "./admin-system";
 import { ParkingLotManagementSystem } from "./management-system";
 import { ParkingArea, SecurityEnum } from "./parking-area";
-import { ParkingBlock, VahicleTypeEnum } from "./parking-block";
+import { ParkingBlock, VehicleTypeEnum } from "./parking-block";
 import { User } from "./user";
-import { Vahicle } from "./vahicle";
+import { Vehicle } from "./vehicle";
 
 // configuring admin.
 const admin = new ParkingLotAdmin("007", "Jamil");
@@ -29,23 +29,23 @@ adminManagementSystem.addNewParkingArea(parkingArea);
 // listing parking blocks.
 adminManagementSystem.addNewBlockInParkingArea(
   "0001",
-  new ParkingBlock("0001LOT", VahicleTypeEnum["2-WHEEL"], 100),
+  new ParkingBlock("0001LOT", VehicleTypeEnum["2-WHEEL"], 100),
 );
 
 adminManagementSystem.addNewBlockInParkingArea(
   "0001",
-  new ParkingBlock("0002LOT", VahicleTypeEnum["4-WHEEL"], 20),
+  new ParkingBlock("0002LOT", VehicleTypeEnum["4-WHEEL"], 20),
 );
 
-// vahicle that is looking to park.
-const vahicle = new Vahicle("VAH786", VahicleTypeEnum["4-WHEEL"]);
+// vehicle that is looking to park.
+const vehicle = new Vehicle("VAH786", VehicleTypeEnum["4-WHEEL"]);
 
-// driver who is driving the vahicle.
-const driver = new User("Mobinul", "9524345434", true, vahicle.vahicleNumber);
+// driver who is driving the vehicle.
+const driver = new User("Mobinul", "9524345434", true, vehicle.vehicleNumber);
 
 // configuring parking management system.
 const parkingManagementSystem = new ParkingLotManagementSystem(
-  vahicle,
+  vehicle,
   driver,
   parkingArea,
 );
